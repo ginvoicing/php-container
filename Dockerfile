@@ -54,7 +54,7 @@ RUN docker-php-ext-configure imap \
     --with-imap-ssl \
     && docker-php-ext-install imap
 
-ADD https://getcomposer.org/download/latest-stable/composer.phar /usr/local/bin/
+ADD https://getcomposer.org/download/latest-2.x/composer.phar /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/composer.phar
 
