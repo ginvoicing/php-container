@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
     fonts-lohit-guru \
     fonts-guru-extra \
     fonts-guru \
+    libgmp-dev \
     unzip
 
 
