@@ -47,6 +47,8 @@ RUN docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
     && docker-php-ext-install fileinfo \
     && docker-php-ext-install curl \
+    && docker-php-ext-install bcmath \
+    && docker-php-ext-install gmp \
     && docker-php-ext-install opcache
 
 RUN docker-php-ext-configure imap \
