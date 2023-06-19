@@ -1,4 +1,4 @@
-FROM php:8.2
+FROM php:8.2-buster
 ENV DEBIAN_FRONTEND noninteractive
 LABEL maintainer="Tarun Jangra<tarun.jangra@hotmail.com>"
 
