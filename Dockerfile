@@ -1,4 +1,4 @@
-FROM php:8.2-bullseye
+FROM php:8.1-bullseye
 ENV DEBIAN_FRONTEND noninteractive
 LABEL maintainer="Tarun Jangra<tarun.jangra@hotmail.com>"
 
@@ -37,9 +37,7 @@ RUN apt-get update && apt-get install -y \
 
 
 RUN docker-php-ext-configure gd \
-    --with-webp \
     --with-jpeg \
-    --with-xpm \
     --with-freetype \
     && docker-php-ext-install -j$(nproc) gd
 
@@ -52,15 +50,6 @@ RUN docker-php-ext-install mysqli \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install gmp \
     && docker-php-ext-install opcache
-
-RUN docker-php-ext-configure imap \
-    --with-kerberos \
-    --with-imap-ssl \
-    && docker-php-ext-install imap
-
-ADD https://getcomposer.org/download/latest-2.x/composer.phar /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/composer.phar
 
 RUN apt-get autoremove -y \
     && apt-get clean \
