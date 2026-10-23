@@ -1,4 +1,4 @@
-FROM php:8.5-bookworm
+FROM php:8.5-trixie
 ENV DEBIAN_FRONTEND=noninteractive
 LABEL maintainer="Tarun Jangra<tarun.jangra@hotmail.com>"
 
