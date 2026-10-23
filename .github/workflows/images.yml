@@ -8,6 +8,9 @@ on:
 jobs:
   build-alpine:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: ["8.3", "8.4", "8.5"]
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -23,12 +26,15 @@ jobs:
       - name: build alpine the image
         run: |
           docker buildx build -f Dockerfile.alpine --push \
-          --tag ginvoicing/php:8.5-alpine  \
-          --tag ginvoicing/php:latest \
+          --build-arg PHP_VERSION=${{ matrix.php_version }} \
+          --tag ginvoicing/php:${{ matrix.php_version }}-alpine \
           --platform linux/amd64,linux/arm64 \
           .
   build-debian:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: ["8.3", "8.4", "8.5"]
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -44,6 +50,7 @@ jobs:
       - name: build the image
         run: |
           docker buildx build --push \
-          --tag ginvoicing/php:8.5  \
+          --build-arg PHP_VERSION=${{ matrix.php_version }} \
+          --tag ginvoicing/php:${{ matrix.php_version }} \
           --platform linux/amd64,linux/arm64 \
           .
